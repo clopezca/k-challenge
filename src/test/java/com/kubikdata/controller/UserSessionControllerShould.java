@@ -50,6 +50,16 @@ public class UserSessionControllerShould {
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
+    @Test
+    public void not_allow_to_create_an_user_session_with_empty_username(){
+
+        UserSessionRequest userSessionRequest = new UserSessionRequest();
+        userSessionRequest.setUsername("");
+        ResponseEntity<String> response = userSessionController.addSession(userSessionRequest);
+
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
 }
 
 

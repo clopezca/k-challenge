@@ -26,6 +26,14 @@ public class UserSessionRepositoryImpl implements UserSessionRepository {
 
     @Override
     public void update(Username username, JwtToken token) {
+        for (Username existingUser : userSessionList.keySet()) {
+            if (existingUser.equals(username)) userSessionList.put(username, token);
+        }
+    }
 
+    @Override
+    public JwtToken getToken(Username username) {
+        if (userSessionList.get(username) == null) return null;
+        return userSessionList.get(username);
     }
 }

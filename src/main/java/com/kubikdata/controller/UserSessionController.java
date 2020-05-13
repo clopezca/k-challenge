@@ -30,10 +30,16 @@ public class UserSessionController {
     @PostMapping(value="/session")
     public ResponseEntity<String> addSession(@RequestBody UserSessionRequest userSessionRequest) {
 
-        UserSessionService userSessionService = new UserSessionService(jwtBuilderGeneratorService, userSessionRepository);
-        String response = userSessionService.addSession(new Username(userSessionRequest.getUsername()));
+        try {
+            UserSessionService userSessionService = new UserSessionService(jwtBuilderGeneratorService, userSessionRepository);
+            String response = userSessionService.addSession(new Username(userSessionRequest.getUsername()));
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 

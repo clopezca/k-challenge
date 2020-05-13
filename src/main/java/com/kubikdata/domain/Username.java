@@ -6,6 +6,7 @@ public class Username {
     private final String username;
 
     public Username(String username) {
+        if(username == null || username.isEmpty()) throw new IllegalArgumentException();
         this.username = username;
     }
 

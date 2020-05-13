@@ -17,13 +17,12 @@ public class JwtToken {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JwtToken jwtToken = (JwtToken) o;
-        return Objects.equals(token, jwtToken.token);
+        JwtToken token1 = (JwtToken) o;
+        return Objects.equals(token, token1.token);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(token);
     }
-
 }

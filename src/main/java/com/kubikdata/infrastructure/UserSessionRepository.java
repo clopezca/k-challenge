@@ -9,4 +9,6 @@ public interface UserSessionRepository {
     void save(Username username, JwtToken token);
 
     void update(Username username, JwtToken token);
+
+    JwtToken getToken(Username username);
 }
