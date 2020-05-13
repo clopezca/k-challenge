@@ -14,7 +14,6 @@ public class JwtBuilderGeneratorService {
 
     private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-
     public String generateToken(String username) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.ES256;
 
@@ -31,7 +30,6 @@ public class JwtBuilderGeneratorService {
                 .signWith(SECRET_KEY);
 
         String tokenJWTString = tokenJWT.compact();
-        System.out.println(tokenJWTString);
 
         return tokenJWTString;
     }
