@@ -11,17 +11,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import service.UserSessionService;
-
-import java.util.Date;
 
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class UserDataControllerShould {
-
-    @Mock
-    UserSessionService userSessionService;
 
     @InjectMocks
     UserDataController userDataController;
@@ -33,12 +27,11 @@ public class UserDataControllerShould {
     public void show_user_session_details(){
         String username = "username";
         String jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVhYjJkMmUwNDgwNGU3YzgxNmE2YWRlIn0sImlhdCI6MTU4ODY4NjA4NSwiZXhwIjoxNTg4Njg5Njg1fQ.52x2bUKX9Je-4M4TXkZL-OfNOPHdwlfOdIO6km5YkZQ";
-        UserResponse userResponse = new UserResponse(username, jwtToken, new Date());
 
         when(userSessionRepository.find(new Username(username))).thenReturn(new Username(username));
-        when(userSessionService.checkUserSession(username, jwtToken)).thenReturn(userResponse);
 
         ResponseEntity<Object> response = userDataController.userInfoGet(username, jwtToken);
+
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 }
