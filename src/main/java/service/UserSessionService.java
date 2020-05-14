@@ -1,10 +1,14 @@
 package service;
 
+import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.JwtToken;
 import com.kubikdata.domain.Username;
 import com.kubikdata.infrastructure.UserSessionRepository;
 import com.kubikdata.service.JwtBuilderGeneratorService;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.NoSuchElementException;
 
 @Service
 public class UserSessionService {
@@ -24,4 +28,12 @@ public class UserSessionService {
         } userSessionRepository.update(username, token);
         return token.getToken();
     }
+
+    public UserResponse checkUserSession(String username, String token) {
+        Username user = userSessionRepository.find(new Username(username));
+        if(user == null) throw new NoSuchElementException();
+        return new UserResponse(username, token, new Date());
+    }
 }
+
+

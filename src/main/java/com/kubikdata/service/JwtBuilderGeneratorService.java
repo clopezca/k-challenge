@@ -3,19 +3,21 @@ package com.kubikdata.service;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import io.jsonwebtoken.impl.crypto.MacProvider;
 import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 
-public class JwtBuilderGeneratorService {
 
-    private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+@Component
+public class JwtBuilderGeneratorService {
 
     public String generateToken(String username) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.ES256;
+        SecretKey secretKey = MacProvider.generateKey(SignatureAlgorithm.HS256);
 
         HashMap<String, Object> header = new HashMap<>();
         header.put("alg", signatureAlgorithm.toString());
@@ -27,10 +29,8 @@ public class JwtBuilderGeneratorService {
                 .claim("username", username)
                 .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L)))
                 .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L)))
-                .signWith(SECRET_KEY);
+                .signWith(secretKey);
 
-        String tokenJWTString = tokenJWT.compact();
-
-        return tokenJWTString;
+        return tokenJWT.compact();
     }
 }

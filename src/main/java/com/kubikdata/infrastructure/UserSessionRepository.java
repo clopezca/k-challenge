@@ -2,7 +2,9 @@ package com.kubikdata.infrastructure;
 
 import com.kubikdata.domain.JwtToken;
 import com.kubikdata.domain.Username;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface UserSessionRepository {
     Username find(Username username);
 

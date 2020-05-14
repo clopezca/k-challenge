@@ -7,9 +7,9 @@ import java.util.Date;
  */
 public class UserResponse {
 
-    private String username;
-    private String token;
     private Date date;
+    private String token;
+    private String username;
 
     public UserResponse(String username, String token, Date date) {
         this.username = username;

@@ -2,10 +2,12 @@ package com.kubikdata.infrastructure;
 
 import com.kubikdata.domain.JwtToken;
 import com.kubikdata.domain.Username;
+import org.springframework.stereotype.Component;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@Component
 public class UserSessionRepositoryImpl implements UserSessionRepository {
 
     protected Map<Username, JwtToken> userSessionList = new LinkedHashMap<>();
