@@ -6,6 +6,7 @@ public class JwtToken {
     private final String token;
 
     public JwtToken(String token) {
+        if(token == null || token.trim().isEmpty()) throw new IllegalArgumentException();
         this.token = token;
     }
 

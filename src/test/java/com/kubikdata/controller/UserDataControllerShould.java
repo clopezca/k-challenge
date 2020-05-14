@@ -1,6 +1,5 @@
 package com.kubikdata.controller;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.Username;
 import com.kubikdata.infrastructure.UserSessionRepository;
 import org.junit.Assert;

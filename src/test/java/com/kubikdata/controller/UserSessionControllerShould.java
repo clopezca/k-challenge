@@ -5,6 +5,7 @@ import com.kubikdata.domain.JwtToken;
 import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.infrastructure.UserSessionRepository;
 import com.kubikdata.service.JwtBuilderGeneratorService;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -59,7 +60,6 @@ public class UserSessionControllerShould {
 
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
-
 }
 
 
