@@ -45,4 +45,12 @@ public class UserDataControllerShould {
 
         Assert.assertEquals(HttpStatus.SERVICE_UNAVAILABLE, response.getStatusCode());
     }
+
+    @Test
+    public void throw_an_error_if_token_is_empty_when_trying_to_retrieve_user_info() {
+
+        ResponseEntity<Object> response = userDataController.userInfoGet(username, "");
+
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 }
