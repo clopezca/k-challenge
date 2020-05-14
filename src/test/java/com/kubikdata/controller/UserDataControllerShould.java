@@ -27,7 +27,7 @@ public class UserDataControllerShould {
     UserSessionRepository userSessionRepository;
 
     @Test
-    public void show_user_session_details(){
+    public void show_user_session_details() {
 
         when(userSessionRepository.find(new Username(username))).thenReturn(new Username(username));
 
