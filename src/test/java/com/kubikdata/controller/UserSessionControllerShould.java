@@ -52,16 +52,10 @@ public class UserSessionControllerShould {
 
     @Test
     public void not_allow_create_an_user_session_with_empty_username(){
-        MockitoAnnotations.initMocks(this);
-
-        when(userSessionRepository.find(new Username("Username"))).thenReturn(null);
-        when(jwtBuilderGeneratorService.generateToken("Username")).thenReturn("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVhYjJkMmUwNDgwNGU3YzgxNmE2YWRlIn0sImlhdCI6MTU4ODY4NjA4NSwiZXhwIjoxNTg4Njg5Njg1fQ.52x2bUKX9Je-4M4TXkZL-OfNOPHdwlfOdIO6km5YkZQ");
 
         UserSessionRequest userSessionRequest = new UserSessionRequest();
         userSessionRequest.setUsername("");
         ResponseEntity<String> response = userSessionController.addSession(userSessionRequest);
-
-        verify(userSessionRepository).save(new Username("Username"), jwtToken);
 
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }

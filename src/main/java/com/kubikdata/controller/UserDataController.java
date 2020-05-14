@@ -32,6 +32,7 @@ public class UserDataController {
         return response;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/info/{username}/{token}")
     public ResponseEntity<Object> userInfoGet(@PathVariable String username, @PathVariable String token) {
         UserSessionService userSessionService = new UserSessionService(jwtBuilderGeneratorService, userSessionRepository);
@@ -43,8 +44,8 @@ public class UserDataController {
 
         } catch (NoSuchElementException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (RuntimeException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
         }
-
-
     }
 }

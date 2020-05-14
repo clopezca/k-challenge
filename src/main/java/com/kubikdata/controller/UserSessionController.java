@@ -7,6 +7,7 @@ import com.kubikdata.service.JwtBuilderGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,7 @@ public class UserSessionController {
     @Autowired
     UserSessionRepository userSessionRepository;
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value="/session")
     public ResponseEntity<String> addSession(@RequestBody UserSessionRequest userSessionRequest) {
 
