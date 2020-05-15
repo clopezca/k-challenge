@@ -5,7 +5,6 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup](#setup)
 
 ## General info
 This project provides a session token that helps to know when a user has logged in the system.
@@ -13,13 +12,6 @@ In order to solve the security challenge, this app creates and shows an user ses
 	
 ## Technologies
 Project is created with:
-* ReactJS
-	
-## Setup
-To run this project, install it locally using npm:
+* Java
 
-```
-$ cd ../k-challenge
-$ npm install
-$ npm start
-```
+	
