@@ -8,8 +8,8 @@
 * [Setup](#setup)
 
 ## General info
-This project is to solve a problem with logged users. 
-The application generates an user session token, and show us user logged in, date an token.
+This project provides a session token that helps to know when a user has logged in the system.
+In order to solve the security challenge, this app creates and shows an user session token, that includes username, date and token.
 	
 ## Technologies
 Project is created with:
